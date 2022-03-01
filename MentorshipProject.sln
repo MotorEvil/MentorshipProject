@@ -1,0 +1,37 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.32112.339
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MP.API", "MP.API\MP.API.csproj", "{86B98663-EB8C-495E-AD63-6E647000619A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MP.Data", "MP.Data\MP.Data.csproj", "{67D80C88-A415-4659-A6D9-D5FB7E85140F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MP.AppServices", "MP.AppServices\MP.AppServices.csproj", "{297CA4B4-904E-4D78-8DF1-76EB980656AE}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{86B98663-EB8C-495E-AD63-6E647000619A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{86B98663-EB8C-495E-AD63-6E647000619A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{86B98663-EB8C-495E-AD63-6E647000619A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{86B98663-EB8C-495E-AD63-6E647000619A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{67D80C88-A415-4659-A6D9-D5FB7E85140F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{67D80C88-A415-4659-A6D9-D5FB7E85140F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{67D80C88-A415-4659-A6D9-D5FB7E85140F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{67D80C88-A415-4659-A6D9-D5FB7E85140F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{297CA4B4-904E-4D78-8DF1-76EB980656AE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{297CA4B4-904E-4D78-8DF1-76EB980656AE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{297CA4B4-904E-4D78-8DF1-76EB980656AE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{297CA4B4-904E-4D78-8DF1-76EB980656AE}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {1B83FE94-CFC4-4F4E-873C-E6535B50F909}
+	EndGlobalSection
+EndGlobal
