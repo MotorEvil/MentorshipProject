@@ -4,27 +4,25 @@
 [ApiController]
 public class RecipesController : ControllerBase
 {
-    private readonly IRecipeService _recipes;
-    private readonly IIngredientService _ingrediens;
-    public RecipesController(IRecipeService recipes,
-                             IIngredientService ingrediens)
+    private readonly IRecipesDomain _recipes;
+
+    public RecipesController(IRecipesDomain recipes)
     {
         _recipes = recipes;
-        _ingrediens = ingrediens;
     }
 
     // GET: api/<RecipesController>
     [HttpGet]
-    public async Task<List<RecipeModel>> Get()
+    public async Task<List<RecipeModel>> GetAllRecipes()
     {
-        return await _recipes.GetRecipeAsync();
+        return await _recipes.GetAllRecipesDomain();
     }
 
     // GET api/<RecipesController>/5
     [HttpGet("{id:length(24)}")]
-    public async Task<ActionResult<RecipeModel>> Get(string id)
+    public async Task<ActionResult<RecipeModel>> GetRecipeById(string id)
     {
-        var result = await _recipes.FindRecipeById(id);
+        var result = await _recipes.GetRecipeByIdDomain(id);
 
         if (result is null)
         {
@@ -36,59 +34,20 @@ public class RecipesController : ControllerBase
 
     // POST api/<RecipesController>
     [HttpPost]
-    public async Task<IActionResult> PostAsync(RecipeModel recipe)
+    public async Task<IActionResult> PostRecipe(RecipeModel recipe)
     {
 
-        List<IngredientModel> ingredientList = new List<IngredientModel>();
+        var model = await _recipes.RecipePostAsyncDomain(recipe);
 
-        foreach (var item in recipe.Ingredients)
-        {
+        return NoContent();
 
-            var ingredient = _ingrediens.FindIngredientByName(item.Name);
-
-            if (ingredient == "False")
-            {
-                await _ingrediens.CreateIngredient(item);
-
-                ingredientList.Add(new IngredientModel
-                {
-                    Id = item.Id,
-                    Name = item.Name,
-                    CaloriesPer100 = item.CaloriesPer100
-                });
-
-            }
-            else
-            {
-                IngredientModel ingModel = await _ingrediens.FindIngredientById(ingredient);
-
-                ingredientList.Add(new IngredientModel
-                {
-                    Id = ingModel.Id,
-                    Name = ingModel.Name,
-                    CaloriesPer100 = ingModel.CaloriesPer100
-                });
-
-            }
-        }
-
-        RecipeModel model = new()
-        {
-            Name = recipe.Name,
-            Description = recipe.Description,
-            Ingredients = ingredientList
-        };
-
-        await _recipes.Createrecipe(model);
-
-        return CreatedAtAction(nameof(Get), new { id = model.Id }, model);
     }
 
     // PUT api/<RecipesController>/5
     [HttpPut("{id:length(24)}")]
-    public async Task<IActionResult> Put(string id, RecipeModel updateRecipe)
+    public async Task<IActionResult> PutRecipe(string id, RecipeModel updateRecipe)
     {
-        var recipe = await _recipes.FindRecipeById(id);
+        var recipe = await _recipes.GetRecipeByIdDomain(id);
 
         if (recipe is null)
         {
@@ -97,23 +56,23 @@ public class RecipesController : ControllerBase
 
         updateRecipe.Id = recipe.Id;
 
-        await _recipes.UpdateRecipe(updateRecipe);
+        await _recipes.UpdateRecipeDomainAsync(updateRecipe);
 
-        return CreatedAtAction(nameof(Get), new { id = updateRecipe.Id }, updateRecipe);
+        return CreatedAtAction(nameof(GetRecipeById), new { id = updateRecipe.Id }, updateRecipe);
     }
 
     // DELETE api/<RecipesController>/5
     [HttpDelete("{id:length(24)}")]
-    public async Task<IActionResult> Delete(string id)
+    public async Task<IActionResult> DeleteRecipe(string id)
     {
-        var recipe = await _recipes.FindRecipeById(id);
+        var recipe = await _recipes.GetRecipeByIdDomain(id);
 
         if (recipe is null)
         {
             return NotFound();
         }
 
-        await _recipes.DeleteRecipe(id);
+        await _recipes.DeleleRecipeDomainAsync(id);
 
         return NoContent();
     }

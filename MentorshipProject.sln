@@ -3,11 +3,13 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.0.32112.339
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MP.API", "MP.API\MP.API.csproj", "{86B98663-EB8C-495E-AD63-6E647000619A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MP.API", "MP.API\MP.API.csproj", "{86B98663-EB8C-495E-AD63-6E647000619A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MP.Data", "MP.Data\MP.Data.csproj", "{67D80C88-A415-4659-A6D9-D5FB7E85140F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MP.Data", "MP.Data\MP.Data.csproj", "{67D80C88-A415-4659-A6D9-D5FB7E85140F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MP.AppServices", "MP.AppServices\MP.AppServices.csproj", "{297CA4B4-904E-4D78-8DF1-76EB980656AE}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MP.AppServices", "MP.AppServices\MP.AppServices.csproj", "{297CA4B4-904E-4D78-8DF1-76EB980656AE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MP.Domain", "MP.Domain\MP.Domain.csproj", "{089A4337-52E6-41F9-98F3-76275A2CEF94}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -27,6 +29,10 @@ Global
 		{297CA4B4-904E-4D78-8DF1-76EB980656AE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{297CA4B4-904E-4D78-8DF1-76EB980656AE}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{297CA4B4-904E-4D78-8DF1-76EB980656AE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{089A4337-52E6-41F9-98F3-76275A2CEF94}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{089A4337-52E6-41F9-98F3-76275A2CEF94}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{089A4337-52E6-41F9-98F3-76275A2CEF94}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{089A4337-52E6-41F9-98F3-76275A2CEF94}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

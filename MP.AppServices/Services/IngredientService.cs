@@ -21,20 +21,9 @@ public class IngredientService : IIngredientService
 
     public string FindIngredientByName(string name)
     {
-        var ingredient = _ingredients.Find(x => x.Name == name).ToList();
-        if (ingredient.Count == 0)
-        {
-            return "False";
-        }
-        else
-        {
-            foreach (var i in ingredient)
-            {
-                return i.Id;
-            }
-        }
+        var ingredients = _ingredients.Find(x => x.Name == name).ToList();
+        return ingredients.FirstOrDefault()?.Id;
 
-       return "True";
     }
 
     public async Task<IngredientModel> FindIngredientById(string id)

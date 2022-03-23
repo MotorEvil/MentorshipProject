@@ -1,6 +1,3 @@
-using MP.AppServices.Services;
-using MP.Data.Data;
-
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
@@ -11,9 +8,10 @@ builder.Services.AddControllers().AddNewtonsoftJson(options =>
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
+builder.Services.AddSingleton<IRecipesDomain, RecipesDomain>();
 builder.Services.AddSingleton<IAppDbConnection, AppDbConnection>();
-builder.Services.AddSingleton<IRecipeService, RecipeService>();
 builder.Services.AddSingleton<IIngredientService, IngredientService>();
+builder.Services.AddSingleton<IRecipeService, RecipeService>();
 
 var app = builder.Build();
 
