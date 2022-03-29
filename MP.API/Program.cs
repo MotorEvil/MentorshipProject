@@ -12,6 +12,8 @@ builder.Services.AddSingleton<IRecipesDomain, RecipesDomain>();
 builder.Services.AddSingleton<IAppDbConnection, AppDbConnection>();
 builder.Services.AddSingleton<IIngredientService, IngredientService>();
 builder.Services.AddSingleton<IRecipeService, RecipeService>();
+builder.Services.AddSingleton<IMealService, MealService>();
+builder.Services.AddSingleton<IMealsDomain, MealsDomain>();
 
 var app = builder.Build();
 

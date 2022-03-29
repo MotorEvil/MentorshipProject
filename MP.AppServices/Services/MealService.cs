@@ -32,8 +32,8 @@ public class MealService : IMealService
         return _meals.ReplaceOneAsync(filter, meal, new ReplaceOptions { IsUpsert = true });
     }
 
-    public void DeleteMeal(string id)
+    public async Task DeleteMeal(string id)
     {
-        _meals.DeleteOneAsync(x => x.Id == id);
+        await _meals.DeleteOneAsync(x => x.Id == id);
     }
 }
