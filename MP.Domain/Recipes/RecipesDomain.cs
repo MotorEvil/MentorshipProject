@@ -3,12 +3,12 @@
 public class RecipesDomain : IRecipesDomain
 {
     private readonly IRecipeService _recipes;
-    private readonly IIngredientService _ingrediens;
+    private readonly IRecipeIngredientService _recipeIngredients;
     public RecipesDomain(IRecipeService recipes,
-                         IIngredientService ingrediens)
+                         IRecipeIngredientService recipeIngredient)
     {
         _recipes = recipes;
-        _ingrediens = ingrediens;
+        _recipeIngredients = recipeIngredient;
     }
 
     public async Task<List<RecipeModel>> GetAllRecipesDomain()
@@ -23,47 +23,44 @@ public class RecipesDomain : IRecipesDomain
 
     public async Task<RecipeModel> RecipePostAsyncDomain(RecipeModel recipe)
     {
-        List<IngredientModel> ingredientList = new List<IngredientModel>();
+        List<RecipeIngredientModel> recipeIngredientList = new List<RecipeIngredientModel>();
 
-        foreach (var item in recipe.Ingredients)
+        foreach (var item in recipe.RecipeIngredients)
         {
 
-            var ingredient = _ingrediens.FindIngredientByName(item.Name);
+            await _recipeIngredients.CreateRecipeIngredient(item);
 
-            if (string.IsNullOrEmpty(ingredient))
+            recipeIngredientList.Add(new RecipeIngredientModel
             {
-                await _ingrediens.CreateIngredient(item);
+                Id = item.Id,
+                RecipeId = item.RecipeId,
+                IngredientId = item.IngredientId,
+                Quantity = item.Quantity
+            });
 
-                ingredientList.Add(new IngredientModel
-                {
-                    Id = item.Id,
-                    Name = item.Name,
-                    CaloriesPer100 = item.CaloriesPer100
-                });
-
-            }
-            else
-            {
-                IngredientModel ingModel = await _ingrediens.FindIngredientById(ingredient);
-
-                ingredientList.Add(new IngredientModel
-                {
-                    Id = ingModel.Id,
-                    Name = ingModel.Name,
-                    CaloriesPer100 = ingModel.CaloriesPer100
-                });
-
-            }
         }
 
         RecipeModel model = new()
         {
             Name = recipe.Name,
             Description = recipe.Description,
-            Ingredients = ingredientList
+            RecipeIngredients = recipeIngredientList
         };
 
         await _recipes.Createrecipe(model);
+
+        foreach (var item in model.RecipeIngredients)
+        {
+            RecipeIngredientModel recipeIngredientModel = new()
+            {
+                Id=item.Id,
+                RecipeId = model.Id,
+                IngredientId=item.IngredientId,
+                Quantity=item.Quantity
+            };
+
+            await _recipeIngredients.UpdateRecipeIngredient(recipeIngredientModel);
+        };
 
         return recipe;
     }

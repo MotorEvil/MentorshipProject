@@ -15,6 +15,7 @@ builder.Services.AddSingleton<IRecipeService, RecipeService>();
 builder.Services.AddSingleton<IRecipesDomain, RecipesDomain>();
 builder.Services.AddSingleton<IMealService, MealService>();
 builder.Services.AddSingleton<IMealsDomain, MealsDomain>();
+builder.Services.AddSingleton<IRecipeIngredientService, RecipeIngredientService>();
 
 var app = builder.Build();
 

@@ -22,8 +22,8 @@ public class RecipeService : IRecipeService
 
     public async Task<RecipeModel> FindRecipeById(string id)
     {
-        var ingredient = await _recipes.FindAsync(x => x.Id == id);
-        return ingredient.FirstOrDefault();
+        var recipe = await _recipes.FindAsync(x => x.Id == id);
+        return recipe.FirstOrDefault();
     }
 
     public Task UpdateRecipe(RecipeModel recipe)

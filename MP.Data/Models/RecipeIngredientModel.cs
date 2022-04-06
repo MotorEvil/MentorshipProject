@@ -5,8 +5,7 @@ public class RecipeIngredientModel
     [BsonId]
     [BsonRepresentation(MongoDB.Bson.BsonType.ObjectId)]
     public string Id { get; set; }
-    public RecipeModel Recipe { get; set; }
-    public IngredientModel Ingredient { get; set; }
+    public string RecipeId { get; set; }
+    public string IngredientId { get; set; }
     public float Quantity { get; set; }
-    public List<RecipeCategoryModel> Category { get; set; }
 }

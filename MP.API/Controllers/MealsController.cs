@@ -42,7 +42,7 @@ public class MealsController : ControllerBase
     }
 
     // PUT api/<MealsController>/5
-    [HttpPut("{id:lenght(24)}")]
+    [HttpPut("{id:length(24)}")]
     public async Task<IActionResult> PutMeal(string id, MealModel updateMeal)
     {
         var recipe = await _meals.GetMealByIdDomain(id);
@@ -60,7 +60,7 @@ public class MealsController : ControllerBase
     }
 
     // DELETE api/<MealsController>/5
-    [HttpDelete("{id:lenght(24)}")]
+    [HttpDelete("{id:length(24)}")]
     public async Task<IActionResult> DeleteMeal(string id)
     {
         var recipe = await _meals.GetMealByIdDomain(id);
