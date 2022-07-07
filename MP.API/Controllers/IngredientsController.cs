@@ -4,9 +4,9 @@
 [ApiController]
 public class IngredientsController : ControllerBase
 {
-    private readonly IIngredientsDomain _ingredients;
+    private readonly IIngredients _ingredients;
 
-    public IngredientsController(IIngredientsDomain ingredients)
+    public IngredientsController(IIngredients ingredients)
     {
         _ingredients = ingredients;
     }
@@ -15,14 +15,14 @@ public class IngredientsController : ControllerBase
     [HttpGet]
     public async Task<List<IngredientModel>> GetAllIngredients()
     {
-        return await _ingredients.GetAllIngredientsDomain();
+        return await _ingredients.GetAllIngredients();
     }
 
     // GET api/<MealsController>/5
     [HttpGet("{id:length(24)}")]
     public async Task<ActionResult<IngredientModel>> GetIngredientById(string id)
     {
-        var result = await _ingredients.GetIngredientByIdDomain(id);
+        var result = await _ingredients.GetIngredientById(id);
 
         if (result is null)
         {
@@ -36,7 +36,7 @@ public class IngredientsController : ControllerBase
     [HttpPost]
     public async Task<IActionResult> PostIngredients(IngredientModel meal)
     {
-        var model = await _ingredients.PostIngredientAsyncDomain(meal);
+        var model = await _ingredients.PostIngredientAsync(meal);
 
         return NoContent();
     }
@@ -45,7 +45,7 @@ public class IngredientsController : ControllerBase
     [HttpPut("{id:length(24)}")]
     public async Task<IActionResult> PutIngredient(string id, IngredientModel updateIngredient)
     {
-        var recipe = await _ingredients.GetIngredientByIdDomain(id);
+        var recipe = await _ingredients.GetIngredientById(id);
 
         if (recipe is null)
         {
@@ -54,7 +54,7 @@ public class IngredientsController : ControllerBase
 
         updateIngredient.Id = recipe.Id;
 
-        await _ingredients.UpdateIngredientAsyncDomain(updateIngredient);
+        await _ingredients.UpdateIngredientAsync(updateIngredient);
 
         return CreatedAtAction(nameof(GetIngredientById), new { id = updateIngredient.Id }, updateIngredient);
     }
@@ -63,14 +63,14 @@ public class IngredientsController : ControllerBase
     [HttpDelete("{id:length(24)}")]
     public async Task<IActionResult> DeleteIngredient(string id)
     {
-        var recipe = await _ingredients.GetIngredientByIdDomain(id);
+        var recipe = await _ingredients.GetIngredientById(id);
 
         if (recipe is null)
         {
             return NotFound();
         }
 
-        await _ingredients.DeleteIngredientAsyncDomain(id);
+        await _ingredients.DeleteIngredientAsync(id);
 
         return NoContent();
     }

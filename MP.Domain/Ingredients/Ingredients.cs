@@ -1,36 +1,36 @@
 ﻿namespace MP.Domain.Ingredients;
 
-public class IngredientsDomain : IIngredientsDomain
+public class Ingredients : IIngredients
 {
     private readonly IIngredientService _ingredients;
 
-    public IngredientsDomain(IIngredientService ingredients)
+    public Ingredients(IIngredientService ingredients)
     {
         _ingredients = ingredients;
     }
 
-    public async Task<List<IngredientModel>> GetAllIngredientsDomain()
+    public async Task<List<IngredientModel>> GetAllIngredients()
     {
         return await _ingredients.GetIngredientsAsync();
     }
 
-    public Task<IngredientModel> GetIngredientByIdDomain(string id)
+    public Task<IngredientModel> GetIngredientById(string id)
     {
         return _ingredients.FindIngredientById(id);
     }
 
-    public async Task<IngredientModel> PostIngredientAsyncDomain(IngredientModel model)
+    public async Task<IngredientModel> PostIngredientAsync(IngredientModel model)
     {
         await _ingredients.CreateIngredient(model);
         return model;
     }
 
-    public async Task UpdateIngredientAsyncDomain(IngredientModel model)
+    public async Task UpdateIngredientAsync(IngredientModel model)
     {
         await _ingredients.UpdateIngredient(model);
     }
 
-    public async Task DeleteIngredientAsyncDomain(string id)
+    public async Task DeleteIngredientAsync(string id)
     {
         await _ingredients.DeleteIngredient(id);
     }

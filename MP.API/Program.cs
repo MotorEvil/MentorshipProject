@@ -10,11 +10,11 @@ builder.Services.AddSwaggerGen();
 
 builder.Services.AddSingleton<IAppDbConnection, AppDbConnection>();
 builder.Services.AddSingleton<IIngredientService, IngredientService>();
-builder.Services.AddSingleton<IIngredientsDomain, IngredientsDomain>();
+builder.Services.AddSingleton<IIngredients, Ingredients>();
 builder.Services.AddSingleton<IRecipeService, RecipeService>();
-builder.Services.AddSingleton<IRecipesDomain, RecipesDomain>();
+builder.Services.AddSingleton<IRecipes, Recipes>();
 builder.Services.AddSingleton<IMealService, MealService>();
-builder.Services.AddSingleton<IMealsDomain, MealsDomain>();
+builder.Services.AddSingleton<IMeals, Meals>();
 builder.Services.AddSingleton<IRecipeIngredientService, RecipeIngredientService>();
 
 var app = builder.Build();

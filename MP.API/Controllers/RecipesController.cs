@@ -4,9 +4,9 @@
 [ApiController]
 public class RecipesController : ControllerBase
 {
-    private readonly IRecipesDomain _recipes;
+    private readonly IRecipes _recipes;
 
-    public RecipesController(IRecipesDomain recipes)
+    public RecipesController(IRecipes recipes)
     {
         _recipes = recipes;
     }
@@ -15,14 +15,14 @@ public class RecipesController : ControllerBase
     [HttpGet]
     public async Task<List<RecipeModel>> GetAllRecipes()
     {
-        return await _recipes.GetAllRecipesDomain();
+        return await _recipes.GetAllRecipes();
     }
 
     // GET api/<RecipesController>/5
     [HttpGet("{id:length(24)}")]
     public async Task<ActionResult<RecipeModel>> GetRecipeById(string id)
     {
-        var result = await _recipes.GetRecipeByIdDomain(id);
+        var result = await _recipes.GetRecipeById(id);
 
         if (result is null)
         {
@@ -37,7 +37,7 @@ public class RecipesController : ControllerBase
     public async Task<IActionResult> PostRecipe(RecipeModel recipe)
     {
 
-        var model = await _recipes.RecipePostAsyncDomain(recipe);
+        var model = await _recipes.RecipePostAsync(recipe);
 
         return NoContent();
 
@@ -47,7 +47,7 @@ public class RecipesController : ControllerBase
     [HttpPut("{id:length(24)}")]
     public async Task<IActionResult> PutRecipe(string id, RecipeModel updateRecipe)
     {
-        var recipe = await _recipes.GetRecipeByIdDomain(id);
+        var recipe = await _recipes.GetRecipeById(id);
 
         if (recipe is null)
         {
@@ -56,7 +56,7 @@ public class RecipesController : ControllerBase
 
         updateRecipe.Id = recipe.Id;
 
-        await _recipes.UpdateRecipeDomainAsync(updateRecipe);
+        await _recipes.UpdateRecipeAsync(updateRecipe);
 
         return CreatedAtAction(nameof(GetRecipeById), new { id = updateRecipe.Id }, updateRecipe);
     }
@@ -65,14 +65,14 @@ public class RecipesController : ControllerBase
     [HttpDelete("{id:length(24)}")]
     public async Task<IActionResult> DeleteRecipe(string id)
     {
-        var recipe = await _recipes.GetRecipeByIdDomain(id);
+        var recipe = await _recipes.GetRecipeById(id);
 
         if (recipe is null)
         {
             return NotFound();
         }
 
-        await _recipes.DeleleRecipeDomainAsync(id);
+        await _recipes.DeleleRecipeAsync(id);
 
         return NoContent();
     }

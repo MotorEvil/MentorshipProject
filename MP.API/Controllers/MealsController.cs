@@ -4,9 +4,9 @@
 [ApiController]
 public class MealsController : ControllerBase
 {
-    private readonly IMealsDomain _meals;
+    private readonly IMeals _meals;
 
-    public MealsController(IMealsDomain meals)
+    public MealsController(IMeals meals)
     {
         _meals = meals;
     }
@@ -15,14 +15,14 @@ public class MealsController : ControllerBase
     [HttpGet]
     public async Task<List<MealModel>> GetAllMeals()
     {
-        return await _meals.GetAllMealsDomain();
+        return await _meals.GetAllMeals();
     }
 
     // GET api/<MealsController>/5
     [HttpGet("{id:length(24)}")]
     public async Task<ActionResult<MealModel>> GetMealById(string id)
     {
-       var result = await _meals.GetMealByIdDomain(id);
+       var result = await _meals.GetMealById(id);
 
        if (result is null)
        {
@@ -36,7 +36,7 @@ public class MealsController : ControllerBase
     [HttpPost]
     public async Task<IActionResult> PostMeal(MealModel meal)
     {
-        var model = await _meals.PostMealAsyncDomain(meal);
+        var model = await _meals.PostMealAsync(meal);
 
         return NoContent();
     }
@@ -45,7 +45,7 @@ public class MealsController : ControllerBase
     [HttpPut("{id:length(24)}")]
     public async Task<IActionResult> PutMeal(string id, MealModel updateMeal)
     {
-        var recipe = await _meals.GetMealByIdDomain(id);
+        var recipe = await _meals.GetMealById(id);
 
         if (recipe is null)
         {
@@ -54,7 +54,7 @@ public class MealsController : ControllerBase
 
         updateMeal.Id = recipe.Id;
 
-        await _meals.UpdateMealAsyncDomain(updateMeal);
+        await _meals.UpdateMealAsync(updateMeal);
 
         return CreatedAtAction(nameof(GetMealById), new { id = updateMeal.Id }, updateMeal);
     }
@@ -63,14 +63,14 @@ public class MealsController : ControllerBase
     [HttpDelete("{id:length(24)}")]
     public async Task<IActionResult> DeleteMeal(string id)
     {
-        var recipe = await _meals.GetMealByIdDomain(id);
+        var recipe = await _meals.GetMealById(id);
 
         if (recipe is null)
         {
             return NotFound();
         }
 
-        await _meals.DeleteMealAsyncDomain(id);
+        await _meals.DeleteMealAsync(id);
 
         return NoContent();
     }

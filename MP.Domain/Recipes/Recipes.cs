@@ -1,27 +1,27 @@
 ﻿namespace MP.Domain.Recipes;
 
-public class RecipesDomain : IRecipesDomain
+public class Recipes : IRecipes
 {
     private readonly IRecipeService _recipes;
     private readonly IRecipeIngredientService _recipeIngredients;
-    public RecipesDomain(IRecipeService recipes,
+    public Recipes(IRecipeService recipes,
                          IRecipeIngredientService recipeIngredient)
     {
         _recipes = recipes;
         _recipeIngredients = recipeIngredient;
     }
 
-    public async Task<List<RecipeModel>> GetAllRecipesDomain()
+    public async Task<List<RecipeModel>> GetAllRecipes()
     {
         return await _recipes.GetRecipeAsync();
     }
 
-    public Task<RecipeModel> GetRecipeByIdDomain(string id)
+    public Task<RecipeModel> GetRecipeById(string id)
     {
         return _recipes.FindRecipeById(id);
     }
 
-    public async Task<RecipeModel> RecipePostAsyncDomain(RecipeModel recipe)
+    public async Task<RecipeModel> RecipePostAsync(RecipeModel recipe)
     {
         List<RecipeIngredientModel> recipeIngredientList = new List<RecipeIngredientModel>();
 
@@ -65,12 +65,12 @@ public class RecipesDomain : IRecipesDomain
         return recipe;
     }
 
-    public async Task UpdateRecipeDomainAsync(RecipeModel recipe)
+    public async Task UpdateRecipeAsync(RecipeModel recipe)
     {
         await _recipes.UpdateRecipe(recipe);
     }
 
-    public async Task DeleleRecipeDomainAsync(string id)
+    public async Task DeleleRecipeAsync(string id)
     {
         await _recipes.DeleteRecipe(id);
     }
