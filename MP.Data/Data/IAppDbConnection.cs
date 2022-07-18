@@ -15,5 +15,7 @@ namespace MP.Data.Data
         string UserCollectionName { get; }
         IMongoCollection<RecipeIngredientModel> RecipeIngrediantCollection { get; }
         string RecipeIngrediantCollectionName { get; }
+        IMongoCollection<CategorieModel> CategorieCollection { get; }
+        string CategorieCollectionName { get; }
     }
 }

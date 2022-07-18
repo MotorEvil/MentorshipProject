@@ -9,16 +9,18 @@ public class AppDbConnection : IAppDbConnection
     public MongoClient Client { get; private set; }
     public string DbName { get; private set; }
     public string IngredientCollectionName { get; private set; }       = "ingredients";
-    public string RecipeCollectionName { get; private set; }           = "recepes";
+    public string RecipeCollectionName { get; private set; }           = "recipes";
     public string MealCollectionName { get; private set; }             = "meals";
     public string UserCollectionName { get; private set; }             = "users";
-    public string RecipeIngrediantCollectionName { get; private set; } = "RecipieIngredient";
+    public string RecipeIngrediantCollectionName { get; private set; } = "RecipeIngredient";
+    public string CategorieCollectionName { get; private set; } = "Categories";
 
     public IMongoCollection<RecipeModel> RecipeCollection { get; private set; }
     public IMongoCollection<IngredientModel> IngredientCollection { get; private set; }
     public IMongoCollection<MealModel> MealCollection { get; private set; }
     public IMongoCollection<UserModel> UserCollection { get; private set; }
     public IMongoCollection<RecipeIngredientModel> RecipeIngrediantCollection { get; private set; }
+    public IMongoCollection<CategorieModel> CategorieCollection { get; private set; }
 
     public AppDbConnection(IConfiguration config)
     {
@@ -32,6 +34,7 @@ public class AppDbConnection : IAppDbConnection
         MealCollection             = _db.GetCollection<MealModel>(MealCollectionName);
         UserCollection             = _db.GetCollection<UserModel>(UserCollectionName);
         RecipeIngrediantCollection = _db.GetCollection<RecipeIngredientModel>(RecipeIngrediantCollectionName);
+        CategorieCollection        = _db.GetCollection<CategorieModel>(CategorieCollectionName);
     }
 
 }
