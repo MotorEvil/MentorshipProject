@@ -34,11 +34,10 @@ public class IngredientsController : ControllerBase
 
     // POST api/<MealsController>
     [HttpPost]
-    public async Task<IActionResult> PostIngredients(IngredientModel meal)
+    public async Task<ActionResult<IngredientModel>> PostIngredients(IngredientModel meal)
     {
         var model = await _ingredients.PostIngredientAsync(meal);
-
-        return NoContent();
+        return meal;
     }
 
     // PUT api/<MealsController>/5

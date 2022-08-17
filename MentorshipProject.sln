@@ -9,7 +9,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MP.Data", "MP.Data\MP.Data.
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MP.AppServices", "MP.AppServices\MP.AppServices.csproj", "{297CA4B4-904E-4D78-8DF1-76EB980656AE}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MP.Domain", "MP.Domain\MP.Domain.csproj", "{089A4337-52E6-41F9-98F3-76275A2CEF94}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MP.Domain", "MP.Domain\MP.Domain.csproj", "{089A4337-52E6-41F9-98F3-76275A2CEF94}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MP.Tests", "MP.Tests\MP.Tests.csproj", "{F48A16C0-C8AE-4036-992D-9F5EE0003A8E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,6 +35,10 @@ Global
 		{089A4337-52E6-41F9-98F3-76275A2CEF94}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{089A4337-52E6-41F9-98F3-76275A2CEF94}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{089A4337-52E6-41F9-98F3-76275A2CEF94}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F48A16C0-C8AE-4036-992D-9F5EE0003A8E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F48A16C0-C8AE-4036-992D-9F5EE0003A8E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F48A16C0-C8AE-4036-992D-9F5EE0003A8E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F48A16C0-C8AE-4036-992D-9F5EE0003A8E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

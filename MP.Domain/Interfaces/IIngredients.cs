@@ -1,5 +1,5 @@
 ﻿
-namespace MP.Domain.Ingredients
+namespace MP.Domain.Interfaces
 {
     public interface IIngredients
     {

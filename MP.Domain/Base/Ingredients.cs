@@ -1,4 +1,6 @@
-﻿namespace MP.Domain.Ingredients;
+﻿
+
+namespace MP.Domain.Base;
 
 public class Ingredients : IIngredients
 {
